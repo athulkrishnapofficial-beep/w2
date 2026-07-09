@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dayana & Kamal Wedding Invitation</title>
+  <meta name="description" content="Join us in celebrating the wedding of Dayana and Kamal. Explore our photo gallery, venue details, and enjoy the music that sets the tone for our special day.">
+  
+  <!-- Google Fonts for Elegant Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       COLOR PALETTE & GLOBAL THEME
+       ========================================================= */
+    :root {
+      --primary: #0a192f;       /* Deep Midnight Blue */
+      --secondary: #d4af37;     /* Elegant Gold */
+      --bg-color: #fcfbf8;      /* Warm Off-White */
+      --text-dark: #2d3748;     /* Soft Black */
+      --text-light: #ffffff;
+      --accent: #f2e8c6;        /* Light Gold for backgrounds */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, .gate-kicker, .eyebrow {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       GATE (ENTRANCE) STYLES
+       ========================================================= */
+    .gate {
+      position: fixed;
+      inset: 0;
+      background: var(--primary);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease-in-out, visibility 1s;
+    }
+
+    .door {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      background-color: var(--primary);
+      border-left: 2px solid var(--secondary);
+      border-right: 2px solid var(--secondary);
+      transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .door-left {
+      left: 0;
+      transform-origin: left;
+      border-right: 4px solid var(--secondary);
+    }
+
+    .door-right {
+      right: 0;
+      transform-origin: right;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .staff {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: rgba(212, 175, 55, 0.3);
+      margin: 15px 0;
+    }
+
+    .door-panel { width: 100%; padding: 0 20px; }
+
+    .gate.open .door-left { transform: translateX(-100%); }
+    .gate.open .door-right { transform: translateX(100%); }
+    .gate.open .gate-center { opacity: 0; pointer-events: none; }
+
+    .gate-center {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: var(--text-light);
+      transition: opacity 0.5s;
+    }
+
+    .gate-kicker {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .gate-center h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    .open-button {
+      background: var(--secondary);
+      color: var(--primary);
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .open-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+      background: #e3c457;
+    }
+
+    /* =========================================================
+       MAIN INVITATION STYLES
+       ========================================================= */
+    .site-shell {
+      display: none;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+    
+    .site-shell.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), url('assets/music-wedding-bg.png') center/cover;
+      color: var(--text-light);
+      padding: 2rem;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    #hero-title {
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin: 10px 0 20px;
+      color: var(--secondary);
+    }
+
+    .hero-copy {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+    }
+    .hero-buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+}
+
+.venue-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 32px;
+    background:#D4AF37;
+    color:#111;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    font-size:16px;
+    transition:.35s ease;
+    box-shadow:0 10px 30px rgba(212,175,55,.35);
+}
+
+.venue-btn:hover{
+    transform:translateY(-4px);
+    background:#e7c557;
+    box-shadow:0 18px 40px rgba(212,175,55,.5);
+}
+
+    .date-strip {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--secondary);
+      padding: 20px 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+    }
+
+    .date-strip span { font-size: 1.1rem; }
+    .date-strip strong { font-size: 1.4rem; color: var(--secondary); }
+
+    /* Floating Notes */
+    .floating-notes span {
+      position: absolute;
+      color: rgba(212, 175, 55, 0.4);
+      font-size: 2rem;
+      animation: floatUp 8s infinite linear;
+      bottom: -50px;
+    }
+    .floating-notes span:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 3rem; }
+    .floating-notes span:nth-child(2) { left: 30%; animation-delay: 2s; font-size: 1.5rem; }
+    .floating-notes span:nth-child(3) { left: 50%; animation-delay: 4s; font-size: 2.5rem; }
+    .floating-notes span:nth-child(4) { left: 70%; animation-delay: 1s; font-size: 2rem; }
+    .floating-notes span:nth-child(5) { left: 90%; animation-delay: 3s; font-size: 3.5rem; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    section { padding: 80px 5%; text-align: center; }
+    
+    .section-heading h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+    }
+
+    /* =========================================================
+       CAROUSEL GALLERY WITH DOWNLOAD BUTTON
+       ========================================================= */
+    .carousel-wrapper {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      background-color: var(--primary);
+    }
+
+    .carousel-track-container {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+      list-style: none;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 500px; /* Fixed height for consistency */
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Download Button Overlay */
+    .download-btn {
+      position: absolute;
+      bottom: 25px;
+      right: 25px;
+      background: var(--secondary);
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .download-btn:hover {
+      transform: scale(1.05);
+      background: #e3c457;
+    }
+
+    .download-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* Carousel Navigation Buttons */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 25, 47, 0.6);
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .carousel-btn:hover {
+      background: var(--secondary);
+      color: var(--primary);
+    }
+
+    .carousel-btn.prev { left: 15px; }
+    .carousel-btn.next { right: 15px; }
+
+    /* Responsive adjustment for carousel height */
+    @media(max-width: 768px) {
+      .carousel-slide img {
+        height: 350px;
+      }
+    }
+
+    /* =========================================================
+       VENUE, MUSIC & CLOSING SECTIONS
+       ========================================================= */
+    .venue-band {
+      background-color: var(--primary);
+      color: var(--text-light);
+      margin: 40px 5%;
+      border-radius: 30px;
+      padding: 80px 20px;
+    }
+    .venue-band h2 { color: var(--secondary); font-size: 3rem; margin-bottom: 10px; }
+    .venue-band p { font-size: 1.2rem; margin-bottom: 30px; }
+    
+    .venue-actions a {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--primary);
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .venue-actions a:hover { background: var(--text-light); }
+
+    .music-band {
+      background-color: var(--accent);
+      margin: 40px 5%;
+      border-radius: 30px;
+    }
+    .music-band h2 { color: var(--primary); font-size: 2.5rem; }
+    .music-copy p { max-width: 600px; margin: 20px auto; color: var(--text-dark); }
+    
+    .record {
+      width: 120px;
+      height: 120px;
+      background: #111;
+      border-radius: 50%;
+      border: 4px solid #333;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spin 3s linear infinite;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .record-core {
+      width: 40px;
+      height: 40px;
+      background: var(--secondary);
+      border-radius: 50%;
+      border: 4px solid #222;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .playlist-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .playlist-row span {
+      background: white;
+      color: var(--primary);
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .closing { padding: 100px 20px; }
+    .closing p { font-size: 1.2rem; font-style: italic; margin-bottom: 20px; }
+    .closing h2 { font-size: 3rem; color: var(--primary); }
+
+    /* Audio Toggle Button */
+    .music-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary);
+      border: 2px solid var(--secondary);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .music-toggle:hover { transform: scale(1.1); }
+    
+    .music-bars { display: flex; gap: 4px; align-items: flex-end; height: 20px; }
+    .music-bars i {
+      display: block;
+      width: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+      animation: bounce 0.8s ease infinite alternate;
+    }
+    .music-bars i:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .music-bars i:nth-child(2) { height: 100%; animation-delay: 0.2s; }
+    .music-bars i:nth-child(3) { height: 40%; animation-delay: 0.4s; }
+    
+    .music-toggle.paused .music-bars i { animation: none; height: 20%; }
+
+    @keyframes bounce {
+      0% { height: 20%; }
+      100% { height: 100%; }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Audio Element -->
+  <audio id="wedding-melody" loop preload="auto">
+    <source src="assets/wedding-melody.wav" type="audio/wav">
+  </audio>
+
+  <!-- Opening Gate -->
+  <div class="gate" id="gate" aria-label="Wedding invitation entrance">
+    <div class="door door-left" aria-hidden="true">
+      <div class="door-panel">
+        <span class="staff staff-one"></span>
+        <span class="staff staff-two"></span>
+      </div>
+    </div>
+    <div class="door door-right" aria-hidden="true">
+      <div class="door-panel">
+        <span class="staff staff-three"></span>
+        <span class="staff staff-four"></span>
+      </div>
+    </div>
+    <div class="gate-center">
+      <p class="gate-kicker">Wedding Invitation</p>
+      <h1>Dayana &amp; Kamal</h1>
+      <button class="open-button" id="openInvite" type="button" aria-controls="invitation" aria-expanded="false">
+        <span class="button-mark" aria-hidden="true">&#9835;</span>
+        <span>Open Invitation</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Invitation Content -->
+  <main class="site-shell" id="invitation" aria-hidden="true">
+    
+    <button class="music-toggle paused" id="musicToggle" type="button" aria-label="Pause music" hidden>
+      <span class="music-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="floating-notes" aria-hidden="true">
+        <span>&#9835;</span><span>&#9834;</span><span>&#9833;</span><span>&#9835;</span><span>&#9834;</span>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">Together with their families</p>
+        <h1 id="hero-title">Dayana &amp; Kamal</h1>
+        <p class="hero-copy">invite you to celebrate a love story set to music, laughter, and forever.</p>
+        <div class="date-strip" aria-label="Wedding date and time">
+          <span>Sunday</span>
+          <strong>23 August 2026</strong>
+          <span>11:25 AM onwards</span>
+        </div>
+        <div class="hero-buttons">
+      <a href="#venue" class="venue-btn">
+        View Venue
+      </a>
+    </div>
+      </div>
+    </section>
+
+    <!-- Carousel Gallery Section -->
+    <section class="details-band">
+      <div class="section-heading">
+        <p class="eyebrow">Our Memories</p>
+        <h2>Photo Gallery</h2>
+      </div>
+      
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev" aria-label="Previous image">&#10094;</button>
+        
+        <div class="carousel-track-container">
+          <ul class="carousel-track">
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (1).png" alt="Bride and Groom">
+              <a href="assets/EA (1).png" download="Dayana_Kamal_1.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (2).png" alt="Engagement">
+              <a href="assets/EA (2).png" download="Kamal_Dayana_2.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (3).png" alt="Couple">
+              <a href="assets/EA (3).png" download="Kamal_Dayana_3.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (4).png" alt="Pre Wedding">
+              <a href="assets/EA (4).png" download="Kamal_Dayana_4.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (5).png" alt="Family">
+              <a href="assets/EA (5).png" download="Kamal_Dayana_5.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+            <li class="carousel-slide">
+              <img src="assets/EA (6).png" alt="Wedding">
+              <a href="assets/EA (6).png" download="Kamal_Dayana_6.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (7).png" alt="Celebration">
+              <a href="assets/EA (7).png" download="Kamal_Dayana_7.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (8).png" alt="Reception">
+              <a href="assets/EA (8).png" download="Kamal_Dayana_8.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (9).png" alt="Ceremony">
+              <a href="assets/EA (9).png" download="Kamal_Dayana_9.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (10).png" alt="Dance">
+              <a href="assets/EA (10).png" download="Kamal_Dayana_10.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li> 
+            <li class="carousel-slide">
+              <img src="assets/EA (11).png" alt="Reception Party">
+              <a href="assets/EA (11).png" download="Kamal_Dayana_11.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (12).png" alt="Wedding Cake">
+              <a href="assets/EA (12).png" download="Kamal_Dayana_12.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>  
+          </li> 
+          <li class="carousel-slide">
+              <img src="assets/EA (13).png" alt="Wedding Ceremony">
+              <a href="assets/EA (13).png" download="Kamal_Dayana_13.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (14).png" alt="Wedding Reception">
+              <a href="assets/EA (14).png" download="Kamal_Dayana_14.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (15).png" alt="Wedding Dance">
+              <a href="assets/EA (15).png" download="Kamal_Dayana_15.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (16).png" alt="Wedding Toast">
+              <a href="assets/EA (16).png" download="Kamal_Dayana_16.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (17).png" alt="Wedding Celebration">
+              <a href="assets/EA (17).png" download="Kamal_Dayana_17.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li> 
+            <li class="carousel-slide">
+              <img src="assets/EA (18).png" alt="Wedding Party">
+              <a href="assets/EA (18).png" download="Kamal_Dayana_18.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            <li class="carousel-slide">
+              <img src="assets/EA (19).png" alt="Wedding Guests">
+              <a href="assets/EA (19).png" download="Kamal_Dayana_19.png" class="download-btn">
+                <span class="download-icon">&#10515;</span> Download
+              </a>
+            </li>
+            
+          </ul>
+        </div>
+
+        <button class="carousel-btn next" aria-label="Next image">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="venue-band" id="venue" aria-label="Venue and RSVP">
+      <div class="venue-copy">
+        <p class="eyebrow">Where music meets love</p>
+        <h2>Samudra River View</h2>
+        <p>Kottappuram</p>
+      </div>
+      <div class="venue-actions">
+        <a href="https://maps.google.com/?q=Samudra+River+View+Kottappuram" target="_blank" rel="noreferrer">View Map</a>
+      </div>
+    </section>
+
+    <section class="music-band" aria-label="Music theme">
+      <div class="record" aria-hidden="true">
+        <div class="record-core"></div>
+      </div>
+      <div class="music-copy">
+        <p class="eyebrow">Our playlist</p>
+        <h2>A celebration in rhythm</h2>
+        <p>From the entrance melody to the final dance, every moment is arranged like a song: soft, bright, and full of heart.</p>
+        <div class="playlist-row">
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="Closing message">
+      <p>With love and joy, we hope to celebrate this beautiful day with you.</p>
+      <h2>Kamal &amp; Dayana</h2>
+    </section>
+  </main>
+
+  <!-- JavaScript for Interactions -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // --- GATE & AUDIO LOGIC ---
+      const openBtn = document.getElementById("openInvite");
+      const gate = document.getElementById("gate");
+      const invitation = document.getElementById("invitation");
+      const audio = document.getElementById("wedding-melody");
+      const musicToggle = document.getElementById("musicToggle");
+
+      openBtn.addEventListener("click", () => {
+        gate.classList.add("open");
+        openBtn.setAttribute("aria-expanded", "true");
+        
+        audio.play().then(() => {
+          musicToggle.classList.remove("paused");
+        }).catch(err => {
+          console.log("Autoplay blocked by browser. User will need to manually toggle audio.", err);
+        });
+
+        setTimeout(() => {
+          gate.style.display = "none";
+          invitation.setAttribute("aria-hidden", "false");
+          invitation.classList.add("visible");
+          musicToggle.removeAttribute("hidden");
+        }, 1200); 
+      });
+
+      musicToggle.addEventListener("click", () => {
+        if (audio.paused) {
+          audio.play();
+          musicToggle.classList.remove("paused");
+          musicToggle.setAttribute("aria-label", "Pause music");
+        } else {
+          audio.pause();
+          musicToggle.classList.add("paused");
+          musicToggle.setAttribute("aria-label", "Play music");
+        }
+      });
+
+      // --- CAROUSEL LOGIC ---
+      const track = document.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      const nextButton = document.querySelector('.carousel-btn.next');
+      const prevButton = document.querySelector('.carousel-btn.prev');
+      
+      let currentIndex = 0;
+
+      const updateCarousel = () => {
+        // Move the track by -100% for each index to slide horizontally
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      };
+
+      nextButton.addEventListener('click', () => {
+        // Loop back to the start if at the end
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      });
+
+      prevButton.addEventListener('click', () => {
+        // Loop to the end if at the start
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      });
+    });
+  </script>
+</body>
+</html>
